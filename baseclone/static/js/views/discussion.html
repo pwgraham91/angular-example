@@ -1,4 +1,10 @@
 <h1>Discussion</h1>
 <h1>{{ discussion.subject }}</h1>
 <p ng-bind-html="discussion.content"></p>
-<button ng-click="deleteMessage(discussion.id, projID);">Delete {{ discussion.subject }}</button>
+<div>
+    <h3>Edit or Delete Discussion</h3>
+    <div>Discussion Name: <input ng-model="editedName" /></div>
+    <div>Discussion Description: <input ng-model="editedDescription" /></div>
+    <button ng-click="editDiscussion(projID);">Edit {{ discussion.subject }}</button>
+</div>
+<button ng-click="deleteMessage(projID);">Delete {{ discussion.subject }}</button>
