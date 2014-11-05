@@ -1,0 +1,4 @@
+<h1>Discussion</h1>
+<h1>{{ discussion.subject }}</h1>
+<p ng-bind-html="discussion.content"></p>
+<button ng-click="deleteMessage(discussion.id, projID);">Delete {{ discussion.subject }}</button>

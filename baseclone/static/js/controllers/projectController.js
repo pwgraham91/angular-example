@@ -1,12 +1,25 @@
 /**
  * Created by GoldenGate on 11/4/14.
  */
-function projectController($scope, $http, $routeParams) {
+function projectController($scope, $http, $routeParams, ProjectFactory) {
     var projectId = $routeParams.id;
+    $scope.projects = ProjectFactory.projectList;
+    if (ProjectFactory.projectList.length > 0) {
+        $scope.projects = ProjectFactory.projectList;
+    }
+    else {
+        $http.get('/proxy/projects.json')
+            .success(function(response) {
+                console.log(response);
+                $scope.projects = response;
+                ProjectFactory.projectList = $scope.projects;
+        }).error(function(error) {
+                console.log(error);
+            });
+    }
     $http.get('/proxy/projects/' + projectId + '.json').
         success(function(data){
             $scope.project = data;
-            console.log(data);
         }).error(function(error) {
             console.log("didn't work");
             console.log(error);
@@ -14,7 +27,6 @@ function projectController($scope, $http, $routeParams) {
     $http.get('/proxy/projects/' + projectId + '/topics.json').
         success(function(data){
             $scope.topics = data;
-            console.log(data);
         }).error(function(error) {
             console.log("didn't work");
             console.log(error);
@@ -22,7 +34,6 @@ function projectController($scope, $http, $routeParams) {
     $http.get('/proxy/calendars.json').
         success(function(data){
             $scope.calendars = data;
-            console.log(data);
         }).error(function(error) {
             console.log("didn't work");
             console.log(error);

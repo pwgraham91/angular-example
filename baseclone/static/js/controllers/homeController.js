@@ -1,13 +1,10 @@
 /**
  * Created by GoldenGate on 11/4/14.
  */
-function homeController($scope, $http) {
-    $http.get('/proxy/projects.json').
-        success(function(projectsResponse) {
-            $scope.projects = projectsResponse;
-        }).
-        error(function(errorResponse) {
-            console.log(errorResponse);
+function homeController($scope, $http, ProjectFactory) {
+    ProjectFactory.getProjects(function(projectsResponse){
+        $scope.projects = projectsResponse;
+        ProjectFactory.projectList = $scope.projects;
     });
 
     $scope.newProject = function() {
@@ -24,4 +21,5 @@ function homeController($scope, $http) {
                 console.log(error)
             });
     };
+
 }

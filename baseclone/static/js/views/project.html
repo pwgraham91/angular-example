@@ -3,10 +3,11 @@
 <h3>Topics</h3>
 <div ng-repeat="topic in topics">
     <div>
-        <strong><p>Title: {{ topic.title }}</p></strong>
-        <p>Message: {{ topic.excerpt }}</p>
+        <strong><a href="#/projects/{{ project.id }}/discussion/{{ topic.topicable.id }}">{{ topic.title }}</a></strong>
+        <p>{{ topic.excerpt }}</p>
     </div>
 </div>
+
 <h3>Calendars</h3>
 <div ng-repeat="event in calendars">
     <div>
@@ -14,7 +15,7 @@
     </div>
 </div>
 <div>
-    <h4>Create Calendar</h4>
+    <h3>Create Calendar</h3>
     <div>Calendar Name: <input ng-model="calendarName" /></div>
     <button ng-click="newCalendar();">Create New Calendar</button>
 </div>
@@ -25,3 +26,9 @@
     <button ng-click="editProject(project.id);">Edit {{ project.name }}</button>
 </div>
 <button ng-click="deleteProject(project.id);">Delete {{ project.name }}</button>
+
+
+<div ng-repeat="project in projects">
+    <a href="#/projects/{{ project.id }}" >{{ project.name }}</a>
+</div>
+

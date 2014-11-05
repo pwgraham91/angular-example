@@ -10,6 +10,10 @@
     <script src="{% static "js/vendors/angular/angular.js" %}"></script>
     <script src="{% static "js/vendors/angular/angular-resource.js" %}"></script>
     <script src="{% static "js/vendors/angular/angular-route.js" %}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-sanitize.js"></script>
+
+
+
     <!------- Bootstrap ------->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
@@ -21,6 +25,12 @@
     <script src="{% static "js/controllers/projectController.js" %}"></script>
     <script src="{% static "js/controllers/calendarController.js" %}"></script>
     <script src="{% static "js/controllers/eventController.js" %}"></script>
+    <script src="{% static "js/controllers/discussionController.js" %}"></script>
+
+    <!------ Factories ---->
+    <script src="{% static "js/factories/projectFactory.js" %}"></script>
+    <script src="{% static "js/factories/messageResource.js" %}"></script>
+
 
     <!-- CSS -->
     <link rel="stylesheet" href="{% static "css/index.css" %}">
