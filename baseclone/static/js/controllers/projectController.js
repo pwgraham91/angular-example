@@ -61,5 +61,17 @@ function projectController($scope, $http, $routeParams, ProjectFactory) {
                 console.log(error)
             });
     };
+    $scope.newCalendar = function() {
+        var data = {
+            "name": $scope.calendarName
+        };
+        $http.post('/proxy/calendars.json', data).
+            success(function(){
+                console.log("worked");
+            }).error(function(error){
+                console.log('fail');
+            })
+
+    }
 
 }

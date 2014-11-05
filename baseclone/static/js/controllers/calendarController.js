@@ -1,7 +1,7 @@
 /**
  * Created by GoldenGate on 11/4/14.
  */
-function calendarController($scope, $http, $routeParams) {
+function calendarController($scope, $http, $routeParams, iCal) {
     var calendarId = $routeParams.id;
     $http.get('/proxy/calendars/'+calendarId+'.json').
         success(function(data){
