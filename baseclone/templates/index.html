@@ -10,13 +10,17 @@
     <script src="{% static "js/vendors/angular/angular.js" %}"></script>
     <script src="{% static "js/vendors/angular/angular-resource.js" %}"></script>
     <script src="{% static "js/vendors/angular/angular-route.js" %}"></script>
-
     <!------- Bootstrap ------->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
     <!-- JavaScript -->
+    <script src="{% static "js/app.js" %}"></script>
 
     <!------- Controllers ------->
+    <script src="{% static "js/controllers/homeController.js" %}"></script>
+    <script src="{% static "js/controllers/projectController.js" %}"></script>
+    <script src="{% static "js/controllers/calendarController.js" %}"></script>
+    <script src="{% static "js/controllers/eventController.js" %}"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="{% static "css/index.css" %}">
@@ -30,9 +34,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <div>
-                    Make this div into an Angular app
+            <div class="col-md-12" ng-app="baseclone">
+                <div ng-view=>
                 </div>
             </div>
         </div>

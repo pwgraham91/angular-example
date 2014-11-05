@@ -1,0 +1,10 @@
+<h1>{{ event.summary }}</h1>
+<h2>{{ event.description }}</h2>
+<p>{{ event.starts_at }}</p>
+<h4>Edit or Delete {{ event.summary }}</h4>
+<div>Event Name: <input ng-model="calNameE" /></div>
+<div>Event Description: <input ng-model="calDescriptionE" /></div>
+<p>Proper format for start date is: 2014-12-28</p>
+<div>Start Date: <input ng-model="calStartsE" /></div>
+<button ng-click="editEvent();">Edit {{ event.summary }}</button>
+<button ng-click="deleteEvent();">Delete {{ event.summary }}</button>

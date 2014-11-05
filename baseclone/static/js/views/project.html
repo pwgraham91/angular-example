@@ -1,0 +1,27 @@
+<h2><div><strong>{{ project.name }}</strong></div>
+<div>{{ project.description }}</div></h2>
+<h3>Topics</h3>
+<div ng-repeat="topic in topics">
+    <div>
+        <strong><p>Title: {{ topic.title }}</p></strong>
+        <p>Message: {{ topic.excerpt }}</p>
+    </div>
+</div>
+<h3>Calendars</h3>
+<div ng-repeat="event in calendars">
+    <div>
+        <a href="#/calendars/{{ event.id }}" >{{ event.name }}</a>
+    </div>
+</div>
+<div>
+    <h4>Create Calendar</h4>
+    <div>Calendar Name: <input ng-model="calendarName" /></div>
+    <button ng-click="newCalendar();">Create New Calendar</button>
+</div>
+<div>
+    <h3>Edit or Delete Project</h3>
+    <div>Project Name: <input ng-model="editedName" /></div>
+    <div>Project Description: <input ng-model="editedDescription" /></div>
+    <button ng-click="editProject(project.id);">Edit {{ project.name }}</button>
+</div>
+<button ng-click="deleteProject(project.id);">Delete {{ project.name }}</button>

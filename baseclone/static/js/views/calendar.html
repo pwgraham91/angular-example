@@ -1,0 +1,22 @@
+<h1>{{ calendar.name }}</h1>
+<div ng-repeat="event in events">
+    <strong><p>{{ event.summary }}</p></strong>
+    <p>{{ event.description }}</p>
+    <p>{{ event.starts_at }}</p>
+    <a href="#/events/{{ event.id }}/{{ calendar.id }}" >Edit or Delete {{ event.description }}</a>
+
+</div>
+<div>
+    <h4>New Event</h4>
+    <div>Event Name: <input ng-model="calName" /></div>
+    <div>Event Description: <input ng-model="calDescription" /></div>
+    <p>Proper format for start date is: 2014-12-28</p>
+    <div>Start Date: <input ng-model="calStarts" /></div>
+    <button ng-click="newEvent();">Create New Event</button>
+</div>
+<div>
+    <h3>Edit or Delete {{ calendar.name }}</h3>
+    <div>Calendar Name: <input ng-model="editedName" /></div>
+    <button ng-click="editCalendar(calendar.id);">Edit {{ calendar.name }}</button>
+</div>
+<button ng-click="deleteCalendar(calendar.id);">Delete {{ calendar.name }}</button>
