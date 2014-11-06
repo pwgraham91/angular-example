@@ -34,6 +34,7 @@ function eventController($scope, $http, $routeParams, iCal) {
             "all_day": true,
             "starts_at": $scope.calStartsE
         };
+//        WITHOUT RESOURCE CODE
 //        $http.put('/proxy/calendars/' + calendarID + '/calendar_events/' + eventId + '.json', data).
 //            success(function () {
 //                console.log("worked")
@@ -42,5 +43,6 @@ function eventController($scope, $http, $routeParams, iCal) {
 //            });
         iCal.update({calendarID: calendarID, eventId: eventId}, data)
     };
+
 
 }

@@ -1,7 +1,16 @@
 <h2><div><strong>{{ project.name }}</strong></div>
 <div>{{ project.description }}</div></h2>
 <h3>Topics</h3>
-<div ng-repeat="topic in topics">
+<p>Filter Topics</p>
+<input ng-model="searchTopic">
+<br><br>
+<p>Filter by Type (Message works):</p>
+<input ng-model="searchType">
+<br><br>
+<p>Filter by Year Created (2014 works):</p>
+<input ng-model="searchTime">
+<p>Only with attachments: <input type="checkbox" ng-model="attachmentBoolean" /></p>
+<div ng-repeat="topic in topics | filter: searchTopic | filter: hasAttachment | topicTypeFilter: searchType | creationTimeFilter: searchTime">
     <div>
         <strong><a href="#/projects/{{ project.id }}/discussion/{{ topic.topicable.id }}">{{ topic.title }}</a></strong>
         <p>{{ topic.excerpt }}</p>
@@ -9,7 +18,9 @@
 </div>
 
 <h3>Calendars</h3>
-<div ng-repeat="event in calendars">
+<p>Filter Calendars</p>
+<input ng-model="searchCal">
+<div ng-repeat="event in calendars | filter: searchCal">
     <div>
         <a href="#/calendars/{{ event.id }}" >{{ event.name }}</a>
     </div>

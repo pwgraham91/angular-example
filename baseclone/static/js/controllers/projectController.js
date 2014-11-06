@@ -27,6 +27,7 @@ function projectController($scope, $http, $routeParams, ProjectFactory) {
     $http.get('/proxy/projects/' + projectId + '/topics.json').
         success(function(data){
             $scope.topics = data;
+            console.log(data)
         }).error(function(error) {
             console.log("didn't work");
             console.log(error);
@@ -71,7 +72,16 @@ function projectController($scope, $http, $routeParams, ProjectFactory) {
             }).error(function(error){
                 console.log('fail');
             })
-
     }
+    $scope.hasAttachment = function(filterData){
+     // If the checkbox is checked (when checked, it's value is true)
+     if ($scope.attachmentBoolean) {
+        // Only return topics that have attachments
+        return filterData.attachments > 0;
+     // else return true for all topics
+        } else {
+        return true
+     }
+ };
 
 }
