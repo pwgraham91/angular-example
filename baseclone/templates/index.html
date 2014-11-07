@@ -40,6 +40,7 @@
     <script src="{% static "js/directives/buttonDirective.js" %}"></script>
     <script src="{% static "js/directives/templateDirective.js" %}"></script>
     <script src="{% static "js/directives/searchBarDirective.js" %}"></script>
+    <script src="{% static "js/directives/navbarDirective.js" %}"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="{% static "css/index.css" %}">
@@ -52,8 +53,13 @@
                 This is outside of our Angular app. You could put a navbar here, for example.
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12" ng-app="baseclone" ng-view>
+        <div class="row" ng-app="baseclone">
+            <div class="col-md-12" template-directive></div>
+            <navbar-a></navbar-a>
+
+
+            <div class="col-md-12" ng-view>
+
             </div>
         </div>
         <div class="row">

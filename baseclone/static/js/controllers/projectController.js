@@ -4,6 +4,11 @@
 function projectController($scope, $http, $routeParams, $location, $rootScope,  ProjectFactory) {
     var projectId = $routeParams.id;
     $scope.projects = ProjectFactory.projectList;
+    $scope.alerts = [
+        {type: 'danger', msg: 'Iceberg Ahead!'},
+        {type: 'success', msg: 'Woot!'},
+        {msg: 'Basic Alert without type'}
+    ]
     if (ProjectFactory.projectList.length > 0) {
         $scope.projects = ProjectFactory.projectList;
     }
@@ -86,8 +91,13 @@ function projectController($scope, $http, $routeParams, $location, $rootScope,  
         var link = $location.absUrl() + '?' + $scope.searchTopic;
         window.prompt("Copy to clipboard: Ctrl+C, Enter", link);
     };
-    $rootScope.$on('$routeChangeSuccess', function (event, next, current){
 
-    })
+  $scope.addAlert = function() {
+    $scope.alerts.push({msg: $scope.alertText});
+    $scope.alertText = null;
+  };
 
+  $scope.closeAlert = function(index) {
+    $scope.alerts.splice(index, 1);
+  };
 }

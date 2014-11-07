@@ -1,6 +1,10 @@
 <h2><div><strong>{{ project.name }}</strong></div>
 <div>{{ project.description }}</div></h2>
-<div template-directive></div>
+<div class="alerts">
+  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+  <input ng-model="alertText">
+  <button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+</div>
 <h3>Topics</h3>
 <p>Filter Topics</p>
 <searchbar></searchbar>
@@ -13,7 +17,7 @@
 <input ng-model="searchTime">
 <p>Only with attachments: <input type="checkbox" ng-model="attachmentBoolean" /></p>
 <accordion>
-    <accordion-group heading="{{ topic.title }}" ng-repeat="topic in topics | filter: searchTopic | filter: hasAttachment | topicTypeFilter: searchType | creationTimeFilter: searchTime">
+    <accordion-group is-open="$first" heading="{{ topic.title }}" ng-repeat="topic in topics | filter: searchTopic | filter: hasAttachment | topicTypeFilter: searchType | creationTimeFilter: searchTime">
     <a href="/#/projects/{{ project.id }}/discussion/{{ topic.topicable.id }}">
        <div>
            <p>{{ topic.excerpt }}</p>

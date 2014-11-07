@@ -5,6 +5,13 @@
 <div>Event Name: <input ng-model="calNameE" /></div>
 <div>Event Description: <input ng-model="calDescriptionE" /></div>
 <p>Proper format for start date is: 2014-12-28</p>
-<div>Start Date: <input ng-model="calStartsE" /></div>
+<div>Start Date:
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="calStartsE" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+    </div>
 <button ng-click="editEvent();">Edit {{ event.summary }}</button>
 <button ng-click="deleteEvent();">Delete {{ event.summary }}</button>
