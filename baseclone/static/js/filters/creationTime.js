@@ -5,7 +5,6 @@ baseclone.filter('creationTimeFilter', function() {
     return function(topicList, topicTime) {
         var filtered = [];
         angular.forEach(topicList, function(topic){
-            console.log(topic.created_at.substring(0,4));
             if (topicTime == null){
                 filtered.push(topic);
             }

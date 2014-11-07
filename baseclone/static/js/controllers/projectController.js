@@ -3,7 +3,6 @@
  */
 function projectController($scope, $http, $routeParams, $location, $rootScope,  ProjectFactory) {
     var projectId = $routeParams.id;
-    console.log($rootScope);
     $scope.projects = ProjectFactory.projectList;
     if (ProjectFactory.projectList.length > 0) {
         $scope.projects = ProjectFactory.projectList;
@@ -11,7 +10,6 @@ function projectController($scope, $http, $routeParams, $location, $rootScope,  
     else {
         $http.get('/proxy/projects.json')
             .success(function(response) {
-                console.log(response);
                 $scope.projects = response;
                 ProjectFactory.projectList = $scope.projects;
         }).error(function(error) {
@@ -28,7 +26,6 @@ function projectController($scope, $http, $routeParams, $location, $rootScope,  
     $http.get('/proxy/projects/' + projectId + '/topics.json').
         success(function(data){
             $scope.topics = data;
-            console.log(data)
         }).error(function(error) {
             console.log("didn't work");
             console.log(error);
@@ -89,5 +86,8 @@ function projectController($scope, $http, $routeParams, $location, $rootScope,  
         var link = $location.absUrl() + '?' + $scope.searchTopic;
         window.prompt("Copy to clipboard: Ctrl+C, Enter", link);
     };
+    $rootScope.$on('$routeChangeSuccess', function (event, next, current){
+
+    })
 
 }

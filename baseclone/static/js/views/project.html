@@ -12,12 +12,15 @@
 <p>Filter by Year Created (2014 works):</p>
 <input ng-model="searchTime">
 <p>Only with attachments: <input type="checkbox" ng-model="attachmentBoolean" /></p>
-<div ng-repeat="topic in topics | filter: searchTopic | filter: hasAttachment | topicTypeFilter: searchType | creationTimeFilter: searchTime">
-    <div>
-        <strong><a href="#/projects/{{ project.id }}/discussion/{{ topic.topicable.id }}">{{ topic.title }}</a></strong>
-        <p>{{ topic.excerpt }}</p>
-    </div>
-</div>
+<accordion>
+    <accordion-group heading="{{ topic.title }}" ng-repeat="topic in topics | filter: searchTopic | filter: hasAttachment | topicTypeFilter: searchType | creationTimeFilter: searchTime">
+    <a href="/#/projects/{{ project.id }}/discussion/{{ topic.topicable.id }}">
+       <div>
+           <p>{{ topic.excerpt }}</p>
+       </div>
+    </a>
+    </accordion-group>
+</accordion>
 
 <h3>Calendars</h3>
 <p>Filter Calendars</p>
