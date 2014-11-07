@@ -24,5 +24,5 @@
     <h3>Edit or Delete {{ calendar.name }}</h3>
     <div>Calendar Name: <input ng-model="editedName" /></div>
     <button ng-click="editCalendar(calendar.id);">Edit {{ calendar.name }}</button>
+    <button ng-click="deleteCalendar(calendar.id);">Delete {{ calendar.name }}</button>
 </div>
-<button ng-click="deleteCalendar(calendar.id);">Delete {{ calendar.name }}</button>

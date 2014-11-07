@@ -1,9 +1,10 @@
 <div>
-
+<img class="campfire" width="50px" src="https://signalvnoise.com/images/campfire-logo-for-fluid.png">
+    <strong><p class="bcClone">Basecamp Clone</p></strong>
     <!-- Single button -->
     <div class="btn-group" dropdown is-open="status.isopen">
       <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
-        BaseCamp Clone <span class="caret"></span>
+        Projects <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
         <li ng-repeat="choice in items">
@@ -14,5 +15,9 @@
             <a href="#/projects/{{ project.id }}" >{{ project.name }}</a>
         </li>
       </ul>
+    </div>
+    <div class="search">
+        <div class="bar"> <searchbar></searchbar></div>
+        <button class="linkSearch" ng-click="linkToSearch();">Copy To Clipboard</button>
     </div>
 </div>

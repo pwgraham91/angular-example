@@ -87,10 +87,6 @@ function projectController($scope, $http, $routeParams, $location, $rootScope,  
            return true
         }
     };
-    $scope.linkToSearch = function() {
-        var link = $location.absUrl() + '?' + $scope.searchTopic;
-        window.prompt("Copy to clipboard: Ctrl+C, Enter", link);
-    };
 
   $scope.addAlert = function() {
     $scope.alerts.push({msg: $scope.alertText});

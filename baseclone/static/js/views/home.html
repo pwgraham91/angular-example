@@ -1,12 +1,26 @@
-<h4 template-directive></h4>
-
+<!-- <h4 template-directive></h4> -->
+<h1>Projects</h1>
 <div ng-repeat="project in projects">
     <div>
         <a href="#/projects/{{ project.id }}" >{{ project.name }}</a>
     </div>
 </div>
 <div>
+    <h2>Create a New Project</h2>
     <div>Project Name: <input ng-model="projectName" /></div>
     <div>Project Description: <input ng-model="projectDescription" /></div>
-    <button ng-click="newProject();">Create New Project</button>
+    <button ng-click="newProject();">Create!</button>
 </div>
+<!--<div>
+  <div style="height: 150px; width: 30%">
+    <carousel interval="myInterval">
+        <slide ng-repeat="slide in slides" active="slide.active">
+            <img ng-src="{slide.image}}" style="margin:auto;">
+            <div class="carousel-caption">
+                    <p>{caroProj.name}}</p>
+            </div>
+        </slide>
+    </carousel>
+    </div>
+</div>
+-->

@@ -1,48 +1,56 @@
-<h2><div><strong>{{ project.name }}</strong></div>
-<div>{{ project.description }}</div></h2>
-<div class="alerts">
-  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-  <input ng-model="alertText">
-  <button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+<h2>{{ project.name }}</h2>
+<h3>{{ project.description }}</h3>
+<div class="col-md-12">
+    <h3>Edit or Delete Project</h3>
+    <div class="inputLabel">Project Name: <input ng-model="editedName" /></div>
+    <div class="inputLabel">Project Description: <input ng-model="editedDescription" /></div>
+    <button ng-click="editProject(project.id);">Edit {{ project.name }}</button>
+    <button ng-click="deleteProject(project.id);">Delete {{ project.name }}</button>
 </div>
-<h3>Topics</h3>
-<p>Filter Topics</p>
-<searchbar></searchbar>
-<button ng-click="linkToSearch();">Copy To Clipboard</button>
-<br>
-<p>Filter by Type (Message works):</p>
-<input ng-model="searchType">
-<br><br>
-<p>Filter by Year Created (2014 works):</p>
-<input ng-model="searchTime">
-<p>Only with attachments: <input type="checkbox" ng-model="attachmentBoolean" /></p>
-<accordion>
-    <accordion-group is-open="$first" heading="{{ topic.title }}" ng-repeat="topic in topics | filter: searchTopic | filter: hasAttachment | topicTypeFilter: searchType | creationTimeFilter: searchTime">
-    <a href="/#/projects/{{ project.id }}/discussion/{{ topic.topicable.id }}">
-       <div>
-           <p>{{ topic.excerpt }}</p>
-       </div>
-    </a>
-    </accordion-group>
-</accordion>
+<div class="row" id="alertAndTopics">
 
-<h3>Calendars</h3>
-<p>Filter Calendars</p>
-<input ng-model="searchCal">
-<div ng-repeat="event in calendars | filter: searchCal">
-    <div>
-        <a href="#/calendars/{{ event.id }}" >{{ event.name }}</a>
+    <div class="col-md-6" id="alerts">
+          <h3>Alerts</h3>
+          <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+          <input ng-model="alertText">
+          <button ng-click="addAlert()">Add Alert</button>
+    </div>
+    <div class="col-md-6" id="topics">
+        <h3>Topics</h3>
+        <h4>Filter Topics</h4>
+        <p class="inputLabel">Filter by Type (Message works):</p>
+        <input ng-model="searchType">
+        <p class="inputLabel">Filter by Date Created (yyyy-mm-dd):</p>
+        <input ng-model="searchTime">
+        <p>Only with attachments: <input type="checkbox" ng-model="attachmentBoolean" /></p>
+        <accordion>
+            <accordion-group is-open="$first" heading="{{ topic.title }}" ng-repeat="topic in topics | filter: searchTopic | filter: hasAttachment | topicTypeFilter: searchType | creationTimeFilter: searchTime">
+            <a href="/#/projects/{{ project.id }}/discussion/{{ topic.topicable.id }}">
+               <div>
+                   <p>{{ topic.excerpt }}</p>
+               </div>
+            </a>
+            </accordion-group>
+        </accordion>
     </div>
 </div>
-<div>
-    <h3>Create Calendar</h3>
-    <div>Calendar Name: <input ng-model="calendarName" /></div>
-    <button ng-click="newCalendar();">Create New Calendar</button>
+<div id="calendarRow" class="row">
+    <div class="col-md-6">
+        <h3>Calendars</h3>
+        <h4>Filter Calendars</h4>
+        <p class="inputLabel">Calendar Name: </p><input ng-model="searchCal">
+        <div ng-repeat="event in calendars | filter: searchCal">
+            <div>
+                <a href="#/calendars/{{ event.id }}" >{{ event.name }}</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h3>Create Calendar</h3>
+        <div>
+            <p class="inputLabel">Calendar Name:  </p><input ng-model="calendarName" />
+        </div>
+        <button ng-click="newCalendar();">Create New Calendar</button>
+    </div>
 </div>
-<div>
-    <h3>Edit or Delete Project</h3>
-    <div>Project Name: <input ng-model="editedName" /></div>
-    <div>Project Description: <input ng-model="editedDescription" /></div>
-    <button ng-click="editProject(project.id);">Edit {{ project.name }}</button>
-</div>
-<button ng-click="deleteProject(project.id);">Delete {{ project.name }}</button>
+<br>

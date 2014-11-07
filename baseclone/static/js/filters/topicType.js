@@ -10,6 +10,9 @@ baseclone.filter('topicTypeFilter', function() {
             if (topicType == null){
                 filtered.push(topic);
             }
+            else if (topicType == ""){
+                filtered.push(topic);
+            }
             else if (topic.topicable.type == topicType) {
                 filtered.push(topic);
             }

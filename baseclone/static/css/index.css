@@ -26,3 +26,33 @@ textarea.ng-dirty.ng-invalid { border:3px solid Red; }
 
 .required { display: none; color:red; }
 .ng-invalid-required ~ span.required { display:inline; }
+
+body {
+    background-color: #e8e1d8;
+}
+
+.bcClone {
+    font-size: 16px;
+    display: inline-block;
+}
+
+.search {
+    display: inline-block;
+}
+
+.bar {
+    display: inline-block;
+}
+
+button {
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+input {
+    display: inline-block;
+}
+
+.inputLabel {
+    display: inline-block;
+}
