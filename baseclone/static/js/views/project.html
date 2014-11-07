@@ -1,9 +1,11 @@
 <h2><div><strong>{{ project.name }}</strong></div>
 <div>{{ project.description }}</div></h2>
+<div template-directive></div>
 <h3>Topics</h3>
 <p>Filter Topics</p>
-<input ng-model="searchTopic">
-<br><br>
+<searchbar></searchbar>
+<button ng-click="linkToSearch();">Copy To Clipboard</button>
+<br>
 <p>Filter by Type (Message works):</p>
 <input ng-model="searchType">
 <br><br>
@@ -37,9 +39,3 @@
     <button ng-click="editProject(project.id);">Edit {{ project.name }}</button>
 </div>
 <button ng-click="deleteProject(project.id);">Delete {{ project.name }}</button>
-
-
-<div ng-repeat="project in projects">
-    <a href="#/projects/{{ project.id }}" >{{ project.name }}</a>
-</div>
-

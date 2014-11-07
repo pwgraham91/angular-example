@@ -1,8 +1,9 @@
 /**
  * Created by GoldenGate on 11/4/14.
  */
-function projectController($scope, $http, $routeParams, ProjectFactory) {
+function projectController($scope, $http, $routeParams, $location, $rootScope,  ProjectFactory) {
     var projectId = $routeParams.id;
+    console.log($rootScope);
     $scope.projects = ProjectFactory.projectList;
     if (ProjectFactory.projectList.length > 0) {
         $scope.projects = ProjectFactory.projectList;
@@ -75,13 +76,18 @@ function projectController($scope, $http, $routeParams, ProjectFactory) {
     }
     $scope.hasAttachment = function(filterData){
      // If the checkbox is checked (when checked, it's value is true)
-     if ($scope.attachmentBoolean) {
-        // Only return topics that have attachments
-        return filterData.attachments > 0;
-     // else return true for all topics
-        } else {
-        return true
-     }
- };
+        if ($scope.attachmentBoolean) {
+           // Only return topics that have attachments
+           return filterData.attachments > 0;
+        // else return true for all topics
+           }
+        else {
+           return true
+        }
+    };
+    $scope.linkToSearch = function() {
+        var link = $location.absUrl() + '?' + $scope.searchTopic;
+        window.prompt("Copy to clipboard: Ctrl+C, Enter", link);
+    };
 
 }

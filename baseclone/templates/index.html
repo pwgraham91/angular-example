@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Basecamp Clone</title>
     <!-- jQuery -->
     <script src="{% static "js/vendors/jquery.js" %}"></script>
     <!------- Angular ------->
@@ -11,8 +11,6 @@
     <script src="{% static "js/vendors/angular/angular-resource.js" %}"></script>
     <script src="{% static "js/vendors/angular/angular-route.js" %}"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-sanitize.js"></script>
-
-
 
     <!------- Bootstrap ------->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -36,6 +34,11 @@
     <script src="{% static "js/filters/topicType.js" %}"></script>
     <script src="{% static "js/filters/creationTime.js" %}"></script>
 
+    <!------ Directives ---->
+    <script src="{% static "js/directives/buttonDirective.js" %}"></script>
+    <script src="{% static "js/directives/templateDirective.js" %}"></script>
+    <script src="{% static "js/directives/searchBarDirective.js" %}"></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="{% static "css/index.css" %}">
 
@@ -48,9 +51,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12" ng-app="baseclone">
-                <div ng-view=>
-                </div>
+            <div class="col-md-12" ng-app="baseclone" ng-view>
             </div>
         </div>
         <div class="row">

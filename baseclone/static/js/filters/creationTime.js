@@ -9,12 +9,17 @@ baseclone.filter('creationTimeFilter', function() {
             if (topicTime == null){
                 filtered.push(topic);
             }
-            else if (topicTime == ""){
+            else{
+            lenTime = topicTime.length;
+
+            if (topicTime == ""){
                 filtered.push(topic);
             }
-            else if (topic.created_at.substring(0,4) == topicTime) {
+            else if (topic.created_at.substring(0,lenTime) == topicTime) {
                 filtered.push(topic);
             }
+            }
+
         });
         return filtered;
  };
