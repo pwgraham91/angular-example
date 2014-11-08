@@ -28,6 +28,18 @@ function projectController($scope, $http, $routeParams, $location, $rootScope,  
             console.log("didn't work");
             console.log(error);
         });
+    $scope.newTopic = function () {
+        var data = {
+            "subject": $scope.topicSubject,
+            "content": $scope.topicContent,
+        };
+        $http.post('/proxy/projects/' + projectId + '/messages.json', data).
+            success(function (topic) {
+                console.log("worked");
+            }).error(function (error) {
+                console.log(error)
+            });
+    };
     $http.get('/proxy/projects/' + projectId + '/topics.json').
         success(function(data){
             $scope.topics = data;

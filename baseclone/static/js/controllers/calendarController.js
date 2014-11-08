@@ -41,6 +41,7 @@ function calendarController($scope, $http, $routeParams, iCal) {
             console.log("didn't work");
             console.log(error);
         });
+    $scope.calStarts = new Date();
     $scope.newEvent = function() {
         var data = {
             "summary": $scope.calName,
@@ -48,10 +49,9 @@ function calendarController($scope, $http, $routeParams, iCal) {
             "all_day": true,
             "starts_at": $scope.calStarts
             };
-        $http.post('/proxy/calendars/'+calendarId+'/calendar_events.json', data).
+    $http.post('/proxy/calendars/'+calendarId+'/calendar_events.json', data).
         success(function(calendar) {
-                console.log(calendar);
-            console.log("worked")
+            console.log(calendar);
         }).error(function(error) {
             console.log(error)
         });

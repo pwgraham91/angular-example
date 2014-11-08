@@ -9,22 +9,24 @@
 </div>
 <div class="row" id="alertAndTopics">
 
-    <div class="col-md-6" id="alerts">
+    <div class="col-md-4" id="alerts">
           <h3>Alerts</h3>
           <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
           <input ng-model="alertText">
           <button ng-click="addAlert()">Add Alert</button>
     </div>
-    <div class="col-md-6" id="topics">
+    <div class="col-md-4" id="topics">
         <h3>Topics</h3>
         <h4>Filter Topics</h4>
+        <p class="inputLabel">Filter by Name: </p>
+        <input ng-model="searchTopic1"><br>
         <p class="inputLabel">Filter by Type (Message works):</p>
-        <input ng-model="searchType">
+        <input ng-model="searchType"><br>
         <p class="inputLabel">Filter by Date Created (yyyy-mm-dd):</p>
         <input ng-model="searchTime">
         <p>Only with attachments: <input type="checkbox" ng-model="attachmentBoolean" /></p>
         <accordion>
-            <accordion-group is-open="$first" heading="{{ topic.title }}" ng-repeat="topic in topics | filter: searchTopic | filter: hasAttachment | topicTypeFilter: searchType | creationTimeFilter: searchTime">
+            <accordion-group is-open="$first" heading="{{ topic.title }}" ng-repeat="topic in topics | filter: searchTopic1 | filter: hasAttachment | topicTypeFilter: searchType | creationTimeFilter: searchTime">
             <a href="/#/projects/{{ project.id }}/discussion/{{ topic.topicable.id }}">
                <div>
                    <p>{{ topic.excerpt }}</p>
@@ -33,9 +35,18 @@
             </accordion-group>
         </accordion>
     </div>
+    <div class="col-md-4">
+    <h3>Create Message</h3>
+    <div>
+        <p class="inputLabel">Message Subject:  </p><input ng-model="topicSubject" />
+        <p class="inputLabel">Message Content:  </p><input ng-model="topicContent" />
+
+    </div>
+    <button ng-click="newTopic();">Create New Message</button>
+    </div>
 </div>
 <div id="calendarRow" class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <h3>Calendars</h3>
         <h4>Filter Calendars</h4>
         <p class="inputLabel">Calendar Name: </p><input ng-model="searchCal">
@@ -45,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <h3>Create Calendar</h3>
         <div>
             <p class="inputLabel">Calendar Name:  </p><input ng-model="calendarName" />

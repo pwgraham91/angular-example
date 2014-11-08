@@ -1,28 +1,33 @@
-<h1>{{ calendar.name }}</h1>
-<div ng-repeat="event in events">
-    <strong><p>{{ event.summary }}</p></strong>
-    <p>{{ event.description }}</p>
-    <p>{{ event.starts_at }}</p>
-    <a href="#/events/{{ event.id }}/{{ calendar.id }}" >Edit or Delete {{ event.description }}</a>
-
-</div>
-<div>
-    <h4>New Event</h4>
-    <div>Event Name: <input ng-model="calName" /></div>
-    <div>Event Description: <input ng-model="calDescription" /></div>
-    <p>Proper format for start date is: 2014-12-28</p>
-    <div>Start Date:
-            <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="calStarts" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </p>
+<div class="row">
+    <div class="col-md-2 col-md-offset-5">
+        <h1>{{ calendar.name }}</h1>
+        <div ng-repeat="event in events">
+            <strong><p>{{ event.summary }}</p></strong>
+            <p>{{ event.description }}</p>
+            <p>{{ event.starts_at }}</p>
+            <a href="#/events/{{ event.id }}/{{ calendar.id }}" >Edit or Delete {{ event.description }}</a>
+        </div>
     </div>
-    <button ng-click="newEvent();">Create New Event</button>
-<div>
-    <h3>Edit or Delete {{ calendar.name }}</h3>
-    <div>Calendar Name: <input ng-model="editedName" /></div>
-    <button ng-click="editCalendar(calendar.id);">Edit {{ calendar.name }}</button>
-    <button ng-click="deleteCalendar(calendar.id);">Delete {{ calendar.name }}</button>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-6">
+        <h3>New Event</h3>
+        <div>Event Name: <input ng-model="calName" /></div>
+        <div>Event Description: <input ng-model="calDescription" /></div>
+        <p>Proper format for start date is: 2014-12-28</p>
+        <div>Start Date:
+            <p class="input-group">
+                <input type="date" ng-model="calStarts">
+                <button ng-click="newEvent();">Create New Event</button>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="pull-right">
+            <h3>Edit or Delete {{ calendar.name }}</h3>
+            <div>Calendar Name: <input ng-model="editedName" /></div>
+            <button ng-click="editCalendar(calendar.id);">Edit {{ calendar.name }}</button>
+            <button ng-click="deleteCalendar(calendar.id);">Delete {{ calendar.name }}</button>
+        </div>
+    </div>
 </div>
